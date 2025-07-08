@@ -4,32 +4,52 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
+## Table of Contents
+- [Datasets Used](#datasets-used)
+- [Implementation Steps](#implementation-steps)
+- [Model Results](#model-results)
+- [Key Insights](#key-insights)
+- [Limitations](#limitations)
+- [Future Work](#future-work)
+- [References](#references)
+- [Explanation of Files in This Folder](#explanation-of-files-in-this-folder)
+
+---
+
 ## Datasets Used
 
-### 1. **Major Crime Indicators Dataset** ([Toronto Police Service](https://data.torontopolice.on.ca/pages/major-crime-indicators))
+<details>
+<summary>1. <strong>Major Crime Indicators Dataset</strong> ([Toronto Police Service](https://data.torontopolice.on.ca/pages/major-crime-indicators))</summary>
+
 - Crimes from Jan 2014 to Dec 2023 (~400,000 records)
 - Filtered for crimes related to the TTC
 - Focused columns:
   - `OCC_DATE` (occurrence date)
   - `NEIGHBOURHOOD_158` (Toronto neighbourhood)
   - `MCI_CATEGORY` (crime type): Assault, Robbery, Auto Theft, Theft Over, Break and Enter
+</details>
 
-### 2. **Neighbourhood Spatial Data** ([City of Toronto](https://open.toronto.ca/dataset/neighbourhoods/))
+<details>
+<summary>2. <strong>Neighbourhood Spatial Data</strong> ([City of Toronto](https://open.toronto.ca/dataset/neighbourhoods/))</summary>
+
 - Used for heatmap visualization
 - Contains Toronto's official neighbourhood boundaries
+</details>
 
 ---
 
 ## Implementation Steps
 
-### Data Preprocessing
+<details>
+<summary>Data Preprocessing</summary>
+
 - Filtered to include only TTC-related incidents
 - Dropped unnecessary columns
 - Aggregated crimes monthly by neighbourhood
+</details>
 
-### Exploratory Analysis
-- Crime trends over 10 years by type and neighbourhood
-- Identified the top 10 most problematic areas
+<details>
+<summary>Exploratory Analysis</summary>
 
 #### Crime Category Trends by Location
 
@@ -55,34 +75,42 @@ Each of the top 10 neighbourhoods had its TTC crime data grouped and visualized 
 - ![Yonge East](Figures/TTC_Crime_Counts_Yonge_East.png)
 - ![Clairelea-Birchmount](Figures/TTC_Crime_Counts_Clairelea.png)
 
-### Model: LSTM (RNN)
+</details>
+
+<details>
+<summary>Model: LSTM (RNN)</summary>
+
 - Grouped monthly counts as time series
 - Used `TimeSeriesGenerator` with batch size = 4 (chosen based on testing different values)
 - Dataset split:
   - 70% Training (2014–2020)
   - 20% Validation (2021–2022)
   - 10% Test (2023)
+</details>
 
-### Loss Function
+<details>
+<summary>Loss Function</summary>
+
 - Mean Squared Error (MSE)  
 - Chosen for penalizing large errors
+</details>
 
 ---
-### Model Results
+
+## Model Results
+
 - The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
 - MSE values vary per neighbourhood.  
   **Example:**
-  ```
-  Annex: 10.08
-  Rosedale-Moore Park: 6.72
-  Etobicoke City Centre: 2.56
-  ```
-  
+Annex: 10.08
+Rosedale-Moore Park: 6.72
+Etobicoke City Centre: 2.56
 
-The final predicted crime trends can be seen over in the following graph. 
+
+The final predicted crime trends can be seen over in the following graph.  
 ![PredictedCrimeFig](Figures/predicted_crime.png)
 
-The following heatmap shows predicted crime levels (Jan–June 2024) across Toronto neighbourhoods. Darker regions indicate higher expected crime rates based on the RNN model.
+The following heatmap shows predicted crime levels (Jan–June 2024) across Toronto neighbourhoods. Darker regions indicate higher expected crime rates based on the RNN model.  
 ![PredictedCrime](Figures/TTC_Predicted_Crime.gif)
 
 ---
@@ -121,21 +149,26 @@ The following heatmap shows predicted crime levels (Jan–June 2024) across Toro
 4. [Toronto Neighbourhood Open Data](https://open.toronto.ca/dataset/neighbourhoods/)
 5. [Neighbourhood Crime Rates - TPS](https://data.torontopolice.on.ca/datasets/TorontoPS::neighbourhood-crime-rates-open-data/explore)
 6. [Major Crime Indicators - TPS](https://data.torontopolice.on.ca/pages/major-crime-indicators)
+
 ---
 
 ## Explanation of Files in This Folder
 
+<details>
+<summary>Click to expand</summary>
+
 - **Major_Crime_Indicators_Open_Data.csv**:  
-  Original dataset by the Toronto Police Service which contains information on reported crimes. Please note the dataset is updated periodically; however, for this project, the dataset used is up to the end of December 2023.
+Original dataset by the Toronto Police Service which contains information on reported crimes. Please note the dataset is updated periodically; however, for this project, the dataset used is up to the end of December 2023.
 
 - **Data Preprocessing.ipynb**:  
-  Takes the original dataset and creates a new CSV keeping only the rows related to crime incidents that happened on the TTC. Produces `Processed_crime_dataset.csv`.
+Takes the original dataset and creates a new CSV keeping only the rows related to crime incidents that happened on the TTC. Produces `Processed_crime_dataset.csv`.
 
 - **Processed_crime_dataset.csv**:  
-  Resulting dataset after initial processing, which involves removing all rows that aren’t related to TTC. This dataset, containing ~11,000 records, is used for data analysis and modeling.
+Resulting dataset after initial processing, which involves removing all rows that aren’t related to TTC. This dataset, containing ~11,000 records, is used for data analysis and modeling.
 
 - **TTC Crime Model Implementation.ipynb**:  
-  Contains all code for the initial analysis of data (including identifying the top 10 most problematic neighbourhoods), graphing trends, training the RNN model, and visualizing crime on a map.
+Contains all code for the initial analysis of data (including identifying the top 10 most problematic neighbourhoods), graphing trends, training the RNN model, and visualizing crime on a map.
 
 - **Neighbourhoods.geojson**:  
-  Original dataset by the City of Toronto Open Data with information on all of Toronto’s neighbourhoods. Used by GeoPandas for mapping neighbourhoods in the visualizations.
+Original dataset by the City of Toronto Open Data with information on all of Toronto’s neighbourhoods. Used by GeoPandas for mapping neighbourhoods in the visualizations.
+</details>
