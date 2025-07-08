@@ -59,10 +59,13 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
   Rosedale-Moore Park: 6.72
   Etobicoke City Centre: 2.56
   ```
+  
 
 The final predicted crime trends can be seen over in the following graph. 
 ![PredictedCrimeFig](Figures/predicted_crime.png)
 
+The following heatmap shows predicted crime levels (Jan–June 2024) across Toronto neighbourhoods. Darker regions indicate higher expected crime rates based on the RNN model.
+![PredictedCrime](Figures/TTC_Predicted_Crime.gif)
 
 ---
 
