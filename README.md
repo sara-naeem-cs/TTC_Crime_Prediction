@@ -1,12 +1,10 @@
-# 📊 Crime Prediction for the TTC Using RNN
-
-## 🧠 Overview
+# Crime Prediction for the TTC Using RNN
 
 With the rise in crime on the Toronto Transit Commission (TTC) and limited budgets, there is a need for intelligent and cost-effective public safety planning. This project uses historical crime data from 2014–2023 to train a Recurrent Neural Network (RNN), specifically an LSTM model, to forecast crime trends for the first half of 2024 (January to June) in the 10 most affected Toronto neighbourhoods.
 
 ---
 
-## 📁 Datasets Used
+## Datasets Used
 
 ### 1. **Major Crime Indicators Dataset** ([Toronto Police Service](https://data.torontopolice.on.ca/pages/major-crime-indicators))
 - Crimes from Jan 2014 to Dec 2023 (~400,000 records)
@@ -22,18 +20,18 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
-## ⚙️ Implementation Steps
+## Implementation Steps
 
-### 🔹 Data Preprocessing
+### Data Preprocessing
 - Filtered to include only TTC-related incidents
 - Dropped unnecessary columns
 - Aggregated crimes monthly by neighbourhood
 
-### 🔹 Exploratory Analysis
+### Exploratory Analysis
 - Crime trends over 10 years by type and neighbourhood
 - Identified the top 10 most problematic areas
 
-### 🔹 Model: LSTM (RNN)
+### Model: LSTM (RNN)
 - Grouped monthly counts as time series
 - Used `TimeSeriesGenerator` with batch size = 4 (chosen based on testing different values)
 - Dataset split:
@@ -41,13 +39,13 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
   - 20% Validation (2021–2022)
   - 10% Test (2023)
 
-### 🔹 Loss Function
+### Loss Function
 - Mean Squared Error (MSE)  
 - Chosen for penalizing large errors
 
 ---
 
-## 📈 Results
+## Results
 
 - The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
 - MSE values vary per neighbourhood.  
@@ -62,7 +60,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
-## 🔍 Key Insights
+## Key Insights
 
 - **Annex** and **Rosedale-Moore Park** require the most urgent resource allocation.
 - Crimes at the Annex are predicted to rise sharply.
@@ -71,7 +69,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
-## 🧪 Limitations
+## Limitations
 
 - Small dataset (only ~120 monthly records per location)
 - COVID-19 likely skewed 2020–2022 trends
@@ -79,7 +77,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
-## 🔮 Future Work
+## Future Work
 
 - Integrate input scaling
 - Explore ARIMA models for comparison
@@ -88,7 +86,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ---
 
-## 📸 Figures
+## Figures
 
 > _If you're publishing this on GitHub, you can replace the placeholders with actual image files (`fig1.png`, etc.) in your repo._  
 
@@ -132,7 +130,7 @@ _Line graph of predicted crime by neighbourhood (Jan–June 2024)_
 6. [Major Crime Indicators - TPS](https://data.torontopolice.on.ca/pages/major-crime-indicators)
 ---
 
-## 📂 Explanation of Files in This Folder
+## Explanation of Files in This Folder
 
 - **Major_Crime_Indicators_Open_Data.csv**:  
   Original dataset by the Toronto Police Service which contains information on reported crimes. Please note the dataset is updated periodically; however, for this project, the dataset used is up to the end of December 2023.
