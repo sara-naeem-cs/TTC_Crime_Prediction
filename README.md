@@ -47,7 +47,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ## Results
 
-### Data Analysis Findings
+### Exploratory Analysis Findings
 
 
 ### Model Results
@@ -60,7 +60,9 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
   Etobicoke City Centre: 2.56
   ```
 
-The final 
+The final predicted crime trends can be seen over in the following graph. 
+![PredictedCrimeFig](Figures/predicted_crime.png)
+
 
 ---
 
