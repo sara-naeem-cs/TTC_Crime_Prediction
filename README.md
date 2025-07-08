@@ -31,6 +31,30 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 - Crime trends over 10 years by type and neighbourhood
 - Identified the top 10 most problematic areas
 
+#### Crime Category Trends by Location
+
+- **Crime Types by Neighbourhood:**  
+  A multi-line graph visualizing how different types of crime (e.g., Assault, Robbery, etc.) vary over time for the most affected neighbourhoods.  
+  ![Crime Types Over Time](Figures/output.png)
+
+#### Top 10 Locations by Crime Count
+
+- **Top 10 Crime Locations:**  
+  A bar chart showing which Toronto neighbourhoods had the highest number of TTC-related crimes.  
+  ![Top 10 Crime Locations](Figures/top_10.png)
+
+#### Monthly Crime Count Trends
+
+Each of the top 10 neighbourhoods had its TTC crime data grouped and visualized by month (2014–2023). This helped identify seasonal trends and prepare input for the LSTM model.
+
+- ![Annex](Figures/TTC_Crime_Counts_Annex.png)
+- ![Rosedale-Moore Park](Figures/TTC_Crime_Counts_Rosedale.png)
+- ![Danforth](Figures/TTC_Crime_Counts_Danforth.png)
+- ![Kennedy Park](Figures/TTC_Crime_Counts_Kennedy.png)
+- ![Yonge-Eglinton](Figures/TTC_Crime_Counts_Yonge_Eglinton.png)
+- ![Yonge East](Figures/TTC_Crime_Counts_Yonge_East.png)
+- ![Clairelea-Birchmount](Figures/TTC_Crime_Counts_Clairelea.png)
+
 ### Model: LSTM (RNN)
 - Grouped monthly counts as time series
 - Used `TimeSeriesGenerator` with batch size = 4 (chosen based on testing different values)
@@ -44,12 +68,6 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 - Chosen for penalizing large errors
 
 ---
-
-## Results
-
-### Exploratory Analysis Findings
-
-
 ### Model Results
 - The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
 - MSE values vary per neighbourhood.  
@@ -74,14 +92,14 @@ The following heatmap shows predicted crime levels (Jan–June 2024) across Toro
 - **Annex** and **Rosedale-Moore Park** require the most urgent resource allocation.
 - Crimes at the Annex are predicted to rise sharply.
 - Most future crimes are expected to be **assaults**.
-- Predictions suggest targeted safety investments like more safety officers or emergency buttons.
+- Predictions suggest targeted safety investments like more safety officers or emergency buttons, especially in the Annex.
 
 ---
 
 ## Limitations
 
 - Small dataset (only ~120 monthly records per location)
-- COVID-19 likely skewed 2020–2022 trends
+- COVID-19 likely skewed 2020–2022 trends. This is also a problem because 2020-2022 years are used for data validation as well. 
 - No data scaling or transformer models due to resource constraints
 
 ---
@@ -92,40 +110,6 @@ The following heatmap shows predicted crime levels (Jan–June 2024) across Toro
 - Explore ARIMA models for comparison
 - Expand predictions to all 158 neighbourhoods
 - Compare predicted vs. actual results after June 2024
-
----
-
-## Figures
-
-> _If you're publishing this on GitHub, you can replace the placeholders with actual image files (`fig1.png`, etc.) in your repo._  
-
-### **Figure 1:**  
-_Total amount of each MCI crime category for all neighbourhoods_  
-![Figure 1](fig1.png)
-
-### **Figure 2:**  
-_Total crime count in top 10 neighbourhoods_  
-![Figure 2](fig2.png)
-
-### **Figure 3:**  
-_Crime trends (monthly) for top 10 locations_  
-![Figure 3](fig3.png)
-
-### **Figure 4:**  
-_RNN predictions on training data_  
-![Figure 4](fig4.png)
-
-### **Figure 5:**  
-_RNN performance on test data_  
-![Figure 5](fig5.png)
-
-### **Figure 6:**  
-_Heatmap of predicted crimes in top 10 locations_  
-![Figure 6](fig6.png)
-
-### **Figure 7:**  
-_Line graph of predicted crime by neighbourhood (Jan–June 2024)_  
-![Figure 7](fig7.png)
 
 ---
 
