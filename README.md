@@ -99,19 +99,21 @@ Each of the top 10 neighbourhoods had its TTC crime data grouped and visualized 
 
 ## Model Results
 
-- The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
-- MSE values vary per neighbourhood.  
-  **Example:**
-Annex: 10.08
-Rosedale-Moore Park: 6.72
-Etobicoke City Centre: 2.56
-
 The following heatmap shows predicted crime levels (Jan–June 2024) across Toronto neighbourhoods. Darker regions indicate higher expected crime rates based on the RNN model.  
 ![PredictedCrime](Figures/TTC_Predicted_Crime.gif)
 
 The final predicted crime trends can be seen over in the following graph.  
 ![PredictedCrimeFig](Figures/predicted_crime.png)
 
+Other findings:
+- The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
+- MSE values vary per neighbourhood.  
+  **Example:**
+```
+Annex: 10.08
+Rosedale-Moore Park: 6.72
+Etobicoke City Centre: 2.56
+```
 ---
 
 ## Key Insights
