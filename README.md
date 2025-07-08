@@ -47,6 +47,10 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
 
 ## Results
 
+### Data Analysis Findings
+
+
+### Model Results
 - The model performs reasonably well for trend prediction, especially in consistent neighbourhoods.
 - MSE values vary per neighbourhood.  
   **Example:**
@@ -56,7 +60,7 @@ With the rise in crime on the Toronto Transit Commission (TTC) and limited budge
   Etobicoke City Centre: 2.56
   ```
 
-- Final predictions for Jan–June 2024 are visualized using both a line chart and a spatial heatmap.
+The final 
 
 ---
 
